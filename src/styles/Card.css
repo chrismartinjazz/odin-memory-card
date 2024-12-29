@@ -1,0 +1,17 @@
+.card {
+  width: 200px;
+  
+  border: 1px solid black;
+  border-radius: 1em;
+  margin: 1em;
+  padding: 1em;
+}
+
+.card__image {
+  width: 100%;
+  border-radius: 0.5em;
+}
+
+.card__title {
+  text-align: center;
+}
