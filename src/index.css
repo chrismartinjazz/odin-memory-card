@@ -1,0 +1,32 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+:root {
+  --font1: 'Tahoma', sans-serif;
+  --font2: 'Garamond', serif;
+  --color1: #958B06;
+  --color2: #CBB8A7;
+  --color3: #6D0000;
+  --color4: #DCE1E5;
+  --footer-height: 3em;
+}
+
+body {
+  font-family: var(--font1);
+  background-color: var(--color2);
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.text--emphasis {
+  color: var(--color1);
+  font-weight: 800;
+}

@@ -1,8 +1,34 @@
+.container {
+  width: 90%;
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: var(--color4);
+}
+
+.main {
+  min-height: calc(100vh - var(--footer-height));
+}
+
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  /* This is better for small screens, once min() is better supported */
-  /* grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr)); */
-  gap: 1rem;
-
+  grid-template-columns: repeat(auto-fill, minmax(min(170px, 100%), 1fr));
+  gap: 0.25rem;
+  width: 100%;
+  margin: 0.75em;
 }
+
+footer {
+  width: 100%;
+  height: var(--footer-height);
+  background-color: var(--color3);
+  text-align: center;
+  padding: 1em 0;
+}
+
+footer a {
+  text-align: center;
+  text-decoration: none;
+  color: var(--color2);
+}
+

@@ -1,0 +1,26 @@
+.header {
+  text-align: center;
+}
+
+.header__title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color1);
+  padding: 0.5em 0 0.5em 0;
+  
+}
+
+.header__instructions {
+  font-style: italic;
+  padding-bottom: 1em;
+}
+
+.header__scoreboard {
+  line-height: 1.5em;
+  background-color: var(--color3);
+  color: var(--color2);
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+}

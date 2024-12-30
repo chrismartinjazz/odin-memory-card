@@ -1,17 +1,32 @@
 .card {
-  width: 200px;
-  border: 1px solid black;
-  border-radius: 1em;
-  margin: 1em;
-  padding: 1em;
+  width: 160px;
   cursor: pointer;
+  margin-bottom: 0.5em;
+}
+
+.card__image:hover {
+  box-shadow: var(--color1) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .card__image {
-  width: 100%;
   border-radius: 0.5em;
 }
 
 .card__text {
-  text-align: center;
+  text-transform: lowercase;
+  text-align: right;
+  width: 100%;
 }
+
+.card__title, .card__photographer {
+  font-family: var(--font2);
+  text-decoration: none;
+  color: black;
+}
+
+.card__photographer {
+  width: 100%;
+  font-size: 0.875rem;
+  color: var(--color1);
+}
+
