@@ -1,10 +1,10 @@
 .card {
   width: 200px;
-  
   border: 1px solid black;
   border-radius: 1em;
   margin: 1em;
   padding: 1em;
+  cursor: pointer;
 }
 
 .card__image {
@@ -12,6 +12,6 @@
   border-radius: 0.5em;
 }
 
-.card__title {
+.card__text {
   text-align: center;
 }

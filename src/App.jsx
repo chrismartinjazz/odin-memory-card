@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react';
 import { getData } from "./getData.js"
 import { getLocalStorage, setLocalStorage, removeLocalStorage } from "./localstorage.js";
 import Card from './components/Card.jsx';
+import Header from "./components/Header.jsx";
 
 const refreshLocalStorage = false;
 if (refreshLocalStorage) removeLocalStorage();
 
-const photoPoolSize = 12;
-const photosToDisplay = 4;
+const photoPoolSize = 30;
+const photosToDisplay = 12;
 
 export default function App() {
   const [photos, setPhotos] = useState([]);
@@ -20,7 +21,12 @@ export default function App() {
       .then((result) => {
         setPhotos(addTitleToPhotos(randomSelection(result.photos, photosToDisplay)));
       })
+      .catch((error) => {
+        console.log(error);
+      })
   }, []);
+
+  const photosInRandomOrder = randomizeArray(photos);
 
   if (clickedIds.size > maxScore) { setMaxScore(clickedIds.size) };
 
@@ -38,26 +44,16 @@ export default function App() {
     }
   }
 
-  const photosInRandomOrder = randomizeArray(photos);
-  
   return (
     <>
-      <div className="header">
-        <div className="header__score">Score: {clickedIds.size}</div>
-        <div className="header__maxScore">Max Score: {maxScore}</div>
-      </div>
+      <Header score={clickedIds.size} target={photos.length} maxScore={maxScore}/>
       <div className="gallery">
         {photosInRandomOrder.map((photo) => (
           <Card key={photo.id} photo={photo} onClick={handleClick} />
         ))}
       </div>
-      <div className="attributions">
+      <div className="attribution">
         <a href="https://www.pexels.com">Photos provided by Pexels</a>
-        {photos.map((photo) => (
-          <div key={photo.id}>
-            <a href={photo.url}>{photo.title}</a> by <a href={photo.photographer_url}>{photo.photographer}</a>
-          </div>
-        ))}
       </div>
     </>
   )
@@ -72,7 +68,7 @@ async function requestData(query) {
   const localData = getLocalStorage() || {};
 
   if (localData && localData[currentDate] && localData[currentDate][query]) {
-    console.log("Local data retrieved", localData[currentDate][query]);
+    console.log("Local data retrieved");
     return localData[currentDate][query];
   }
 
@@ -80,7 +76,7 @@ async function requestData(query) {
   if (result.error) {
     console.log(result.error);
   } else {
-    console.log("API queried", result);
+    console.log("API queried");
     if (!localData[currentDate]) localData[currentDate] = {};
     localData[currentDate][query] = result;
     setLocalStorage(localData);
@@ -88,16 +84,16 @@ async function requestData(query) {
   }
 }
 
-function randomizeArray(input) {
+function randomizeArray(array) {
   // Use Fisher-Yates Shuffle to shuffle a duplicate of the array.
-  const output = [...input];
+  const newArray = [...array];
 
-  for (let i = output.length - 1; i > 0; i--) {
+  for (let i = newArray.length - 1; i > 0; i--) {
     const randomIndex = Math.floor(Math.random() * (i + 1));
-    [output[i], output[randomIndex]] = [output[randomIndex], output[i]]
+    [newArray[i], newArray[randomIndex]] = [newArray[randomIndex], newArray[i]]
   }
   
-  return output;
+  return newArray;
 }
 
 function randomSelection(array, numberToSelect) {
@@ -108,7 +104,7 @@ function randomSelection(array, numberToSelect) {
 
   const randomIndices = [];
   while (randomIndices.length < numberToSelect) {
-    const n = Math.floor(Math.random() * 10);
+    const n = Math.floor(Math.random() * array.length);
     if (!randomIndices.includes(n)) randomIndices.push(n)
   }
   randomIndices.sort();

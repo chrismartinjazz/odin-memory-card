@@ -168,6 +168,31 @@ result.photos[0].photographer_url
     }
 ]
 
+Header:
+
+```txt
++-----------------------+
+|                       |
+|     MEMORY CARDS      |
+|                       |
+| Click each image once |
+|                       |
+|       Score: 2        |
+|      Target: 10       |
+|  High score: 8        |
+|                       |
+| ...                   |
+
++-----------------------------------------------+
+|                                               |
+|     MEMORY CARDS                Score: 2      |
+|                                Target: 10     |
+|  Click each image once     High score: 8      |
+|                                               |
+| ...                                           |
+
+```
+
 Card:
 
 ```txt
@@ -184,7 +209,7 @@ Card:
 |                       |
 |                       |
 | foggy chicago skyline |
-|                       |
+|      photographer     |
 +=======================+
 
 ```
